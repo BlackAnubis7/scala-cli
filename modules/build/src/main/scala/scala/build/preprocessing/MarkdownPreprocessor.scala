@@ -105,7 +105,7 @@ case object MarkdownPreprocessor extends Preprocessor {
       ))
         .getOrElse(ProcessingOutput(BuildRequirements(), Nil, BuildOptions(), None))
     val rawCode = rawProcessingOutput.updatedContent.getOrElse(parsedRaw)
-    val rawRelPath   = os.rel / (subPath / os.up) / s"${subPath.last.stripSuffix(".md")}_rawmd.scala" //
+    val rawRelPath   = os.rel / (subPath / os.up) / s"${subPath.last.stripSuffix(".md")}_rawmd.scala"
     val rawFile = PreprocessedSource.InMemory(
       reportingPath.map((subPath, _)),
       rawRelPath,
@@ -118,9 +118,6 @@ case object MarkdownPreprocessor extends Preprocessor {
       scopePath
     )
 
-    // System.out.println(s"<<< MAIN\n${mainCode}\nMAIN >>>")
-    // System.out.println(s"<<< TEST\n${testCode}\nTEST >>>")
-    // System.out.println(s"<<< RAW\n${rawCode}\nRAW >>>")
     List(mainFile, testFile, rawFile)
   }
 
